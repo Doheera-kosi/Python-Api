@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-
+# GET REQUEST
 @app.route("/get-user/<user_id>")
 def get_user(user_id):
     user_data = {
@@ -17,6 +17,12 @@ def get_user(user_id):
 
     return jsonify(user_data), 200
 
+# POST REQUEST
+@app.route("/create-user", methods=["POST"])
+def create_user():
+    data = request.get_json()
+
+    return jsonify(data), 201
 
 if __name__ == "__main__":
     app.run(debug=True)
